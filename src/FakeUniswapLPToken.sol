@@ -2,7 +2,7 @@
 pragma solidity 0.8.18;
 import "openzeppelin/token/ERC20/extensions/ERC4626.sol";
 
-contract UniswapV2LPToken is ERC4626 {
+contract FakeUniswapLPToken is ERC4626 {
     constructor(
         address _underlyingAsset
     ) ERC20("UniswapLP", "LP") ERC4626(IERC20(_underlyingAsset)) {}
