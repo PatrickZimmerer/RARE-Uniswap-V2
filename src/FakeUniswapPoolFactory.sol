@@ -41,6 +41,7 @@ contract FakeUniswapPoolFactory {
             liquidityTokenName,
             liquidityTokenSymbol
         );
+        FakeUniswapPool(pool).initialize(tokenA, tokenB);
         // populate mapping in both directions
         getPool[tokenA][tokenB] = pair;
         getPool[tokenB][tokenA] = pair;
