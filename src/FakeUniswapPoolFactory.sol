@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
+
+import "./interfaces/IUniswapV2Factory.sol";
 import "./FakeUniswapPool.sol";
 
-contract FakeUniswapPoolFactory {
-    address public immutable feeTo;
+contract FakeUniswapPoolFactory is IUniswapV2Factory {
+    uint8 public fee;
 
     mapping(address => mapping(address => address)) public getPool;
     address[] public allPools;
@@ -41,11 +43,15 @@ contract FakeUniswapPoolFactory {
             liquidityTokenName,
             liquidityTokenSymbol
         );
-        FakeUniswapPool(pool).initialize(tokenA, tokenB);
+        FakeUniswapPool(pool).initialize(tokenA, tokenB, fee);
         // populate mapping in both directions
         getPool[tokenA][tokenB] = pair;
         getPool[tokenB][tokenA] = pair;
         allPools.push(address(pool));
         emit PairCreated(tokenA, tokenB, pair, allPools.length);
+    }
+
+    function allPoolsLength() external pure returns (uint256) {
+        return allPools.length;
     }
 }
