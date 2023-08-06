@@ -2,24 +2,26 @@
 pragma solidity 0.8.19;
 
 interface IUniswapV2Factory {
-    event PairCreated(
+    event PoolCreated(
         address indexed token0,
         address indexed token1,
-        address pair,
+        address pool,
         uint256
     );
 
-    function getPair(
+    function getPool(
         address tokenA,
         address tokenB
-    ) external view returns (address pair);
+    ) external view returns (address pool);
 
-    function allPairs(uint256) external view returns (address pair);
+    function allPools(uint256) external view returns (address pool);
 
-    function allPairsLength() external view returns (uint256);
+    function fee() external view returns (uint8 fee);
 
-    function createPair(
+    function allPoolsLength() external view returns (uint256);
+
+    function createLiquidityPool(
         address tokenA,
         address tokenB
-    ) external returns (address pair);
+    ) external returns (address pool);
 }
