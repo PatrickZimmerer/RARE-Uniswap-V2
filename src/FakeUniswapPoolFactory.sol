@@ -5,9 +5,9 @@ import "./interfaces/IUniswapV2Factory.sol";
 import "./FakeUniswapPool.sol";
 
 /**
- * @title FlashLoanReceiver
+ * @title FakeUniswapPoolFactory
  * @author Patrick Zimmerer
- * @notice A simple FlashLoanReceiver contract that is just used for testing purposes
+ * @notice A simple fake of the UniSwapV2 Factory which is used to create liquidity pools
  */
 
 contract FakeUniswapPoolFactory is IUniswapV2Factory {
