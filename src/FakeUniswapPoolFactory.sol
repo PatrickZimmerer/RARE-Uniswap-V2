@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-import "./interfaces/IUniswapV2Factory.sol";
-import "./FakeUniswapPool.sol";
+import {IFakeUniswapFactory} from "./interfaces/IFakeUniswapFactory.sol";
+import {FakeUniswapPool} from "./FakeUniswapPool.sol";
 
 /**
  * @title FakeUniswapPoolFactory
@@ -10,7 +10,7 @@ import "./FakeUniswapPool.sol";
  * @notice A simple fake of the UniSwapV2 Factory which is used to create liquidity pools
  */
 
-contract FakeUniswapPoolFactory is IUniswapV2Factory {
+contract FakeUniswapPoolFactory is IFakeUniswapFactory {
     uint8 public fee;
     mapping(address => mapping(address => address)) public getPool;
     address[] public allPools;
@@ -45,7 +45,7 @@ contract FakeUniswapPoolFactory is IUniswapV2Factory {
         emit PoolCreated(tokenA, tokenB, pool, allPools.length);
     }
 
-    function allPoolsLength() external pure returns (uint256) {
+    function allPoolsLength() external view returns (uint256) {
         return allPools.length;
     }
 }
