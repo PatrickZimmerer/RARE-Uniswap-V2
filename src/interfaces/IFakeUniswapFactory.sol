@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-interface IUniswapV2Factory {
+interface IFakeUniswapFactory {
     event PoolCreated(
-        address indexed token0,
-        address indexed token1,
+        address indexed tokenA,
+        address indexed tokenB,
         address pool,
         uint256
     );

@@ -4,7 +4,7 @@ pragma solidity 0.8.19;
 import {IERC20} from "openzeppelin/token/ERC20/IERC20.sol";
 import {IERC20Metadata} from "openzeppelin/token/ERC20/extensions/IERC20Metadata.sol";
 
-interface IUniswapVaultToken is IERC20, IERC20Metadata {
+interface IFakeUniswapERC20 is IERC20, IERC20Metadata {
     event Deposit(
         address indexed sender,
         address indexed owner,
@@ -28,9 +28,9 @@ interface IUniswapVaultToken is IERC20, IERC20Metadata {
         uint8 flashLoanFee_
     ) external;
 
-    function asset0() external view returns (address assetTokenAddress);
+    function assetA() external view returns (address assetTokenAddress);
 
-    function asset1() external view returns (address assetTokenAddress);
+    function assetB() external view returns (address assetTokenAddress);
 
     function totalAssets()
         external
